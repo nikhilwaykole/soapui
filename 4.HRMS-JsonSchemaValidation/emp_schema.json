@@ -1,0 +1,33 @@
+{  
+   "$schema":"http://json-schema.org/draft-03/schema",
+   "required":true,
+   "type":"object",
+   "properties":{  
+      "employee":{  
+         "required":true,
+         "type":"object",
+         "properties":{  
+            "id":{  
+               "required":true,
+               "type":"number"
+            },
+            "name":{  
+               "required":true,
+               "type":"string"
+            },
+            "age":{  
+               "required":true,
+               "type":"number"
+            },
+            "deptNo":{  
+               "required":true,
+               "type":"number"
+            },
+            "hobbies":{  
+               "required":false,
+               "type":"string"
+            }
+         }
+      }
+   }
+}

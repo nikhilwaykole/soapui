@@ -1,0 +1,41 @@
+A.StartConversion
+POST : http://localhost:9876/videoconvert/task
+
+{  
+   "video1":{  
+      "name":"test1.mov",
+      "convertto":"mp4"
+   },
+   "video2":{  
+      "name":"test2.flv",
+      "convertto":"mov"
+   }
+}
+
+Mock Response:
+1.VideoConvStartedResponse
+----------------------------------------------------------------------------
+def taskId="${new Random().nextInt(100)}"
+requestContext.taskIdNo = taskId
+*****************************************************************************
+B.GetVideoConvertStatus
+GET : http://localhost:9876/videoconvert/task/{id}
+
+Mock Response:
+1.ProcessingResponse
+
+{"status":"PROCESSING"}
+
+2.CompleteResponse:
+
+{status:"COMPLETE"}
+---------------------------------------------------------------------------------
+def randNo = "${new Random().nextInt(5)}"
+log.info "Random Number" + randNo
+
+if(randNo == "2"){
+	return "CompleteResponse"
+}else{
+	return "ProcessingResponse"
+}
+***********************************************************************************

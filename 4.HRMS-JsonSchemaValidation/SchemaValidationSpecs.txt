@@ -1,0 +1,44 @@
+getEmpDetails:
+
+GET- http://localhost:9876/employee/{emp_id}
+
+Response
+1. Response OK
+
+{"employee": {
+"id": 7934,
+"name": "MILLER",
+"age": 28,
+"deptNo": 10
+}}
+
+2. Response Dept Missing
+
+{"employee": {
+"id": 7934,
+"name": "MILLER",
+"age": 28
+}}
+
+----------------------------------------------------------------------
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.github.fge.jsonschema.core.report.ProcessingReport
+import com.github.fge.jsonschema.main.JsonSchema
+import com.github.fge.jsonschema.main.JsonSchemaFactory
+
+def response = context.expand('${getEmpDetailsRequest#Response}')
+log.info response
+
+ObjectMapper mapper = new ObjectMapper()
+JsonNode invoiceJSON = mapper.readTree(response)
+JsonNode invoiceSchemaJSON = mapper.readTree(new File(""))
+
+JsonSchemaFactory factory = JsonSchemaFactory.byDefault()
+JsonSchema invoiceSchema = factory.getJsonSchema(invoiceSchemaJSON)
+if (invoiceSchema.validInstance(invoiceJSON)) log.info("Response Validated!") 
+else {
+	testRunner.fail(invoiceSchema.validate(invoiceJSON).toString())
+	log.info("Schema validation Failed!") 
+	
+}

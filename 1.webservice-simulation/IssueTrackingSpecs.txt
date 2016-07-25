@@ -1,0 +1,125 @@
+Login
+GET - http://localhost:9876/rest/login
+
+Header
+ "login":"valid-uname",
+ "password": "valid-pwd"
+
+
+Login Mock Response
+1.validLoginRes:
+
+{
+   "id": 1,
+   "token": "1-47nj12FfT7"
+}
+
+2.invalidLoginRes:
+
+{
+   "code": 401,
+   "message": "The login or password you entered are not valid.",
+   "error": true,
+   "documentation": "http://localhost:9876/rest/5.0/api/"
+}
+-------------------------------------------------------------------------
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+if (queryString == "login=valid-uname&password=valid-pwd"){
+	return "validLoginRes"
+}else{
+	return "invalidLoginRes"
+}
+*************************************************************************
+CreateBug - POST - http://localhost:9876/rest/bug
+
+{
+  "product" : "Quickoffice",
+  "component" : "Word",
+  "version" : "2.4",
+  "summary" : "Document crashed",
+  "alias" : "Crash",
+  "op_sys" : "All",
+  "priority" : "High",
+  "rep_platform" : "All"
+}
+
+Create Bug Mock Response
+
+1.bugCreatedSuccess-Res:
+
+{"bugId": 1}
+
+2.bugCreateError-ProdctReq-Res
+
+{
+   "error": true,
+   "message": "You must select/enter a product.",
+   "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/",
+   "code": 400
+}
+----------------------------------------------------------------------------
+import groovy.json.JsonSlurper
+def requestBody = mockRequest.getRequestContent()
+def jsonSlurper = new JsonSlurper();
+def object = jsonSlurper.parseText(requestBody)
+if (object.product == null){
+	return "bugCreateError-ProdctReq-Res";
+}else{
+	return "bugCreatedSuccess-Res"
+}
+
+********************************************************************************
+CreateAttachement - 
+POST - http://localhost:9876/rest/bug/{bug_id}/attachment
+{
+  "is_patch" : true,
+  "comment" : "This is a new attachment comment",
+  "is_markdown" : true,
+  "summary" : "Test Attachment",
+  "content_type" : "text/plain",
+  "data" : "test",
+  "file_name" : "test_attachment.txt",
+  "obsoletes" : [],
+  "is_private" : false
+}
+
+
+CreateAttachment Mock Response:
+1.attachmentCreatedSucces-Res
+
+{"bugId": ${bugId}, "attachmentId": 15}
+
+2.bugNotFound-Res
+
+{
+   "code": 101,
+   "error": true,
+   "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/",
+   "message": "Bug #100 does not exist."
+}
+
+3.fileNotAttached-Res
+
+{
+   "code": 606,
+   "error": true,
+   "message": "The file you are trying to attach is empty, does not exist, or you don't have permission to read it.",
+   "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/"
+}
+------------------------------------------------------------------------------------------------------
+import groovy.json.JsonSlurper
+def jsonSlurper = new JsonSlurper()
+def request = mockRequest.getRequestContent()
+def jsonObj = jsonSlurper.parseText(request)
+requestContext.bugId = jsonObj.id
+if (jsonObj.data == ""){
+	return "fileNotAttached-Res"	
+}else if (jsonObj.id > 100){
+	return "bugNotFound-Res"
+}else{
+	return "attachmentCreatedSucces-Res"
+}
+************************************************************************************************************************
+
+

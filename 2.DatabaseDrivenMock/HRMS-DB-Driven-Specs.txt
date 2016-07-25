@@ -1,0 +1,91 @@
+CREATE TABLE EMP(
+ EMPNO INT NOT NULL,
+ ENAME VARCHAR(10),
+ JOB VARCHAR(9),
+ MGR INT,
+ SAL NUMERIC(7,2),
+ DEPTNO INT
+]);
+
+
+INSERT INTO emp VALUES (7369, 'SMITH', 'CLERK', 7902, 800, 20);
+INSERT INTO EMP VALUES (7499, 'ALLEN', 'SALESMAN', 7698, 1600, 30);
+INSERT INTO EMP VALUES (7521, 'WARD', 'SALESMAN', 7698, 1250, 30);
+ INSERT INTO EMP VALUES (7566, 'JONES', 'MANAGER', 7839, 2975, 20);
+ INSERT INTO EMP VALUES (7654, 'MARTIN', 'SALESMAN', 7698, 1250, 30);
+ INSERT INTO EMP VALUES (7698, 'BLAKE', 'MANAGER', 7839, 2850, 30);
+ INSERT INTO EMP VALUES (7782, 'CLARK', 'MANAGER', 7839, 2450, 10);
+ INSERT INTO EMP VALUES (7788, 'SCOTT', 'ANALYST', 7566, 3000, 20);
+ INSERT INTO EMP VALUES (7839, 'KING', 'PRESIDENT', NULL, 5000, 10);
+ INSERT INTO EMP VALUES (7844, 'TURNER', 'SALESMAN', 7698, 1500, 30);
+ INSERT INTO EMP VALUES (7876, 'ADAMS', 'CLERK', 7788, 1100, 20);
+ INSERT INTO EMP VALUES (7900, 'JAMES', 'CLERK', 7698, 950, 30);
+ INSERT INTO EMP VALUES (7902, 'FORD', 'ANALYST', 7566, 3000, 60);
+ INSERT INTO EMP VALUES (7934, 'MILLER', 'CLERK', 7782, 1300, 10);
+************************************************************************************
+GetEmployeeDetails
+GET http://localhost:9876/hrservice/rest/employee?emp_id=?
+
+MockResponse
+
+1.validEmpDetailsRes
+
+{"empNo": "${empNo}",
+"name" : "${name}",
+"job": "${job}",
+"mgr" : "${mgr}",
+"sal" : "${sal}",
+"deptNo" : "${deptNo}"}
+
+2.invalidEmpNoRes
+{
+   "error": true,
+   "message": "Employee ID does not exists",
+   "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/",
+   "code": 400
+}
+---------------------------------------------------------------------------------------------
+import groovy.json.JsonSlurper
+import groovy.sql.Sql
+def jsonSlurper = new JsonSlurper()
+def req = mockRequest.getRequest().getQueryString()
+def dbDriver = "com.mysql.jdbc.Driver"
+def connStr = "jdbc:mysql://localhost:3306/soapui"
+def sql = Sql.newInstance(connStr,"root","test",dbDriver)
+def empId = req.split('=')
+sql.eachRow("select * from EMP where EMPNO=${empId[1]}"){ row ->
+requestContext.empNo = row.EMPNO
+requestContext.name = row.ENAME
+requestContext.job = row.JOB
+requestContext.mgr = row.MGR
+requestContext.sal = row.SAL
+requestContext.deptNo = row.DEPTNO
+}
+
+def rowData = sql.rows("select * from EMP where EMPNO=${empId[1]}")
+if (rowData.isEmpty()){
+	return "invalidEmpNoRes"
+}else{
+	return "validEmpDetailsRes"
+}
+**************************************************************************************************
+
+CreateEmployeeDetails
+POST http://localhost:9876/hrservice/rest/employee
+
+**************************************************************************************************
+
+UpdateEmployeeDetails
+PUT http://localhost:9876/hrservice/rest/employee/{emp_id}
+
+**************************************************************************************************
+
+DeleteEmployeeDetails
+DELETE http://localhost:9876/hrservice/rest/employee/{emp_id}
+
+**************************************************************************************************
+     
+
+
+
+    
