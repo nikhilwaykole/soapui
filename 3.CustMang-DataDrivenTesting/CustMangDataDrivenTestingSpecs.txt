@@ -7,34 +7,37 @@ POST-http://localhost:8080/Multicert/rest/customerservice/addcustomer
 -------------------------------------------------------------------------
 setup script:
 
-context.fileReader = new BufferedReader(new FileReader("/DATA/WebServiceTestingSoapUI/data-driven-testing/data.txt"))
-context.data = context.fileReader.readLine();
-log.info "Set Up Script"
-arr = context.data.split("@")
+context.assertionList = []
+context.list = new File('/DATA/PRESENTATION/3.CustMang-DataDrivenTesting/data.txt').collect {it}
+if (!context.list.empty){
+context.currentLine = context.list[0]
+arr = context.list[0].split("@")
 testCase.setPropertyValue("userData",arr[0])
 testCase.setPropertyValue("ExpRes",arr[1])
-context.assertionList = []
----------------------------------------------------------------------------------------
+context.list.remove(0)
+}
 
+---------------------------------------------------------------------------------------
+Groovy Script 
 def httpResponseHeaders = context.testCase.testSteps["POST-addCustRequest"].testRequest.response.responseHeaders
 def httpStatus = httpResponseHeaders["#status#"]
 def actStatusCode = (httpStatus =~ "[1-5]\\d\\d")[0]
-if (context.data != null){
-	arr=context.data.split("@");
-	if (actStatusCode.trim() == arr[1].trim()){
-		log.info("Assert Passed")
-	}else{
-		log.info("Assert Failed.Expected status code is ${arr[1]} but was $actStatusCode")
-		context.assertionList.add("Assert Failed for data " + arr[0])
-	}
-	testRunner.testCase.setPropertyValue("userData",arr[0]);
-	context.data = context.fileReader.readLine();
-	if (context.data != null){
-		testRunner.gotoStep(0)	
-	}
-}else{
-	assert context.assertionList.isEmpty() : context.assertionList.toString()
-	context.fileReader.close()
+log.info actStatusCode
+
+arr = context.currentLine.split("@");
+ if (actStatusCode.trim() == arr[1].trim()){
+	log.info("Assert Passed")
+ }else{
+	log.info("Assert Failed.Expected status code is ${arr[1]} but was $actStatusCode and ${arr[0]}")
+	context.assertionList.add("Assert Failed for data " + arr[0])
+}
+log.info "***" + context.list
+if(!context.list.empty){
+nextLine = context.list[0]
+testRunner.testCase.setPropertyValue("userData",nextLine.split("@")[0]);
+context.list.remove(0)
+testRunner.gotoStep(0)	
 }
 
+assert context.assertionList.isEmpty() : context.assertionList.toString()
 

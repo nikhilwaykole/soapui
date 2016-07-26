@@ -7,14 +7,14 @@ Header
 
 
 Login Mock Response
-1.validLoginRes:
+1.LoginSuccessJSON:
 
 {
    "id": 1,
    "token": "1-47nj12FfT7"
 }
 
-2.invalidLoginRes:
+2.LoginFailedJSON:
 
 {
    "code": 401,
@@ -22,15 +22,57 @@ Login Mock Response
    "error": true,
    "documentation": "http://localhost:9876/rest/5.0/api/"
 }
--------------------------------------------------------------------------
-def queryString = mockRequest.getRequest().getQueryString()
-log.info "QueryString: " + queryString
-if (queryString == "login=valid-uname&password=valid-pwd"){
-	return "validLoginRes"
-}else{
-	return "invalidLoginRes"
-}
-*************************************************************************
+3.LoginSuccessXML
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <LoginResponse xmlns="http://www.webserviceX.NET">
+         <LoginResult><
+         		<id>1</id>
+         		<token>1-47nj12FfT7</token>
+         </LoginResult>
+      </LoginResponse>
+   </soap:Body>
+</soap:Envelope>
+
+4.LoginFailedXML
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <LoginResponse xmlns="http://www.webserviceX.NET">
+         <LoginResult><
+         		<message>The login or password you entered are not valid.</message>
+         </LoginResult>
+      </LoginResponse>
+   </soap:Body>
+</soap:Env
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Login Dispatch Script:  
+
+     try{
+    	 reqAcceptHeader = mockRequest.getRequestHeaders().get("Accept")[0]
+      reqLoginHeader = mockRequest.getRequestHeaders().get("login")[0]
+      reqPwdHeader = mockRequest.getRequestHeaders().get("password")[0]
+      if (reqAcceptHeader.contains("application/json")){
+      	if(reqLoginHeader == 'valid-login' && reqPwdHeader == 'valid-pwd' ){
+      		log.info "login success. return JSON response"
+        		return 'LoginSuccessJSON'
+      	}else{
+      		log.info "login failed. return json response"
+        		return 'LoginFailedJSON'
+      	}
+      }else if (reqAcceptHeader.contains("text/xml"))
+      	if(reqLoginHeader == 'valid-login' && reqPwdHeader == 'valid-pwd'){
+      		log.info "login success. return XML response"
+        		return 'LoginSuccessXML'
+      	}else{
+      		log.info "login failed. return XML response"
+        		return 'LoginFailedXML'
+      }
+    }catch(Exception e){
+    		log.info e
+      	return 'BadRequest'
+    }
+****************************************************************************************************************************************************************
 CreateBug - POST - http://localhost:9876/rest/bug
 
 {
@@ -46,11 +88,11 @@ CreateBug - POST - http://localhost:9876/rest/bug
 
 Create Bug Mock Response
 
-1.bugCreatedSuccess-Res:
+1.BugCreated
 
-{"bugId": 1}
+{"bugId": ${bugId}}
 
-2.bugCreateError-ProdctReq-Res
+2.ProductRequired
 
 {
    "error": true,
@@ -58,18 +100,30 @@ Create Bug Mock Response
    "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/",
    "code": 400
 }
-----------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Create Bug Dispatch Script:
 import groovy.json.JsonSlurper
+import com.eviware.soapui.SoapUI
+try{
+def jsonSlurper = new JsonSlurper()
+def soapUI = new SoapUI()
 def requestBody = mockRequest.getRequestContent()
-def jsonSlurper = new JsonSlurper();
-def object = jsonSlurper.parseText(requestBody)
-if (object.product == null){
-	return "bugCreateError-ProdctReq-Res";
-}else{
-	return "bugCreatedSuccess-Res"
-}
+def jsonObj = jsonSlurper.parseText(requestBody)
 
-********************************************************************************
+def id = context.expand('${#Global#bugCntr}').toInteger()
+requestContext.bugId = ++id
+soapUI.globalProperties.setPropertyValue( "bugCntr", requestContext.bugId.toString())
+
+if (jsonObj.product == null || jsonObj.product == ""){
+	return 'ProductRequired'
+}else{
+	return 'BugCreated'
+}
+}catch(Exception e){
+	log.info e
+	return "BadRequest"
+}
+**************************************************************************************************************************************************************************
 CreateAttachement - 
 POST - http://localhost:9876/rest/bug/{bug_id}/attachment
 {
@@ -86,40 +140,54 @@ POST - http://localhost:9876/rest/bug/{bug_id}/attachment
 
 
 CreateAttachment Mock Response:
-1.attachmentCreatedSucces-Res
+1.AttachmentCreated
 
-{"bugId": ${bugId}, "attachmentId": 15}
+{"bugId": ${bugId}, "attachmentId": ${attachId}}
 
-2.bugNotFound-Res
+2.BugNotExists
 
 {
-   "code": 101,
+   "code": 400,
    "error": true,
    "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/",
-   "message": "Bug #100 does not exist."
+   "message": "Bug ${bugId} does not exist."
 }
 
-3.fileNotAttached-Res
+3.FileNotAttached
 
 {
-   "code": 606,
+   "code": 400,
    "error": true,
    "message": "The file you are trying to attach is empty, does not exist, or you don't have permission to read it.",
    "documentation": "https://bugzilla.readthedocs.org/en/5.0/api/"
 }
-------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Create Attachemnt Dispach Script:
+
 import groovy.json.JsonSlurper
+import com.eviware.soapui.SoapUI
+try{
 def jsonSlurper = new JsonSlurper()
 def request = mockRequest.getRequestContent()
 def jsonObj = jsonSlurper.parseText(request)
 requestContext.bugId = jsonObj.id
+
+requestContext.attachId = context.expand('${#Global#attachId}').toInteger()
+requestContext.attachId = ++ requestContext.attachId
+SoapUI.globalProperties.setPropertyValue('attachId', requestContext.attachId.toString() )
+
 if (jsonObj.data == ""){
-	return "fileNotAttached-Res"	
+	return "FileNotAttached"	
 }else if (jsonObj.id > 100){
-	return "bugNotFound-Res"
+	return "BugNotExists"
 }else{
-	return "attachmentCreatedSucces-Res"
+	return "AttachmentCreated"
 }
-************************************************************************************************************************
+}catch(Exception e){
+	log.info e
+	return "BadRequest"
+}
+
+************************************************************************************************************************************************************************
 
 

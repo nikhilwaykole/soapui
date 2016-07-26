@@ -20,7 +20,7 @@ Response
 "age": 28
 }}
 
-----------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.fge.jsonschema.core.report.ProcessingReport
@@ -32,7 +32,7 @@ log.info response
 
 ObjectMapper mapper = new ObjectMapper()
 JsonNode invoiceJSON = mapper.readTree(response)
-JsonNode invoiceSchemaJSON = mapper.readTree(new File(""))
+JsonNode invoiceSchemaJSON = mapper.readTree(new File("/DATA/PRESENTATION/4.HRMS-JsonSchemaValidation/emp_schema.json"))
 
 JsonSchemaFactory factory = JsonSchemaFactory.byDefault()
 JsonSchema invoiceSchema = factory.getJsonSchema(invoiceSchemaJSON)
@@ -42,3 +42,5 @@ else {
 	log.info("Schema validation Failed!") 
 	
 }
+
+
