@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8b3fb5e3-c1f1-4f1d-bb8d-8d03fce92973" activeEnvironment="Default" name="1.AddNumbers" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="254c4f1b-f355-4c69-b264-f858ab7af133" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:9876" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://ULTP-532:8080/</con:endpoint><con:endpoint>http://localhost:9876</con:endpoint></con:endpoints><con:resource name="Addtwonumbers" path="/addtwonumbers" id="98585355-a52a-4797-85b9-50593335589d"><con:settings/><con:parameters><con:parameter><con:name>first</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>second</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="AddTwoNumbers" id="78e0e6de-ec7c-4846-b2b7-93d6c3512d09" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:add="http://localhost/addtwonumbers">add:Response</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:add="http://localhost/addtwonumbers">add:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/html; charset=iso-8859-1</con:mediaType><con:status>200</con:status><con:params/><con:element>html</con:element></con:representation><con:request name="addTwoNumbersRequest" id="530c872a-0774-4edb-b8ed-634c4174eaae" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addtwonumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="second" value="4"/>
+  <con:entry key="first" value="1"/>
+</con:parameters><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry></con:parameterOrder></con:request></con:method></con:resource></con:interface><con:interface xsi:type="con:RestService" id="d8befa48-29ff-432d-b107-f41786630a5a" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:9876" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://ULTP-532:9876/</con:endpoint><con:endpoint>http://localhost:9876</con:endpoint></con:endpoints><con:resource name="Addthreenumbers" path="/addthreenumbers" id="eebd260b-a8c5-4ebd-a22d-58dd6cbda74d"><con:settings/><con:parameters><con:parameter><con:name>first</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>second</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>third</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="AddThreeNumbers" id="7ae2e4fa-c5a5-4aad-b4af-103a6c84f6b5" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>text/html; charset=iso-8859-1</con:mediaType><con:status>200</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:add="http://localhost/addthreenumbers">add:Response</con:element></con:representation><con:request name="AddThreeNumbers" id="253a9be2-38e7-4255-9d61-ab2852bb1582" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addthreenumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="second" value="2"/>
+  <con:entry key="third" value="3"/>
+  <con:entry key="first" value="1"/>
+</con:parameters><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry><con:entry>third</con:entry></con:parameterOrder></con:request></con:method></con:resource></con:interface><con:testSuite id="346695a9-b1d7-440c-b573-60d380848583" name="Addtion Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ca5bf61b-a41a-4122-8fad-b23fb04ea06b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Two Number Addition TC" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="TwoNumberAddtionStep" id="d79c66a7-1ef3-409c-bddf-ca14c765131d"><con:settings/><con:config service="http://localhost:9876" resourcePath="/addtwonumbers" methodName="AddTwoNumbers" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="AddTwoNumbers - addTwoNumbersRequest" id="530c872a-0774-4edb-b8ed-634c4174eaae" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addtwonumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="second" value="3"/>
+  <con:entry key="first" value="2"/>
+</con:parameters><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ca21e0f4-c5a2-45c0-8495-eb60dab586f3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ThreeNumberAddtionTC" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="TwoNumberAdditionStep" id="452a0860-19d5-4b75-afd9-1eff68c38aed"><con:settings/><con:config service="http://localhost:9876" resourcePath="/addtwonumbers" methodName="AddTwoNumbers" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="REST Request" id="530c872a-0774-4edb-b8ed-634c4174eaae" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addtwonumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="second" value="4"/>
+  <con:entry key="first" value="1"/>
+</con:parameters><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="ThreeNumberAddtionStep" id="86345917-5958-4605-a7bf-5a8e370590b5"><con:settings/><con:config service="http://localhost:9876" resourcePath="/addthreenumbers" methodName="AddThreeNumbers" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="ThreeNumberAddtionStep" id="253a9be2-38e7-4255-9d61-ab2852bb1582" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addthreenumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="second" value="2"/>
+  <con:entry key="third" value="5"/>
+  <con:entry key="first" value="1"/>
+</con:parameters><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry><con:entry>third</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="41f095f5-7888-4091-9292-9ae4879875b1" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TwoNumberAddionPropertiesTC" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="TwoNumberAdditionStep" id="bc011f09-08c3-4bb2-b4fe-3a91bef3fe4c"><con:settings/><con:config service="http://localhost:9876" resourcePath="/addtwonumbers" methodName="AddTwoNumbers" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="TwoNumberAdditionStep" id="530c872a-0774-4edb-b8ed-634c4174eaae" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addtwonumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties><con:property><con:name>first</con:name><con:value>10</con:value></con:property><con:property><con:name>second</con:name><con:value>20</con:value></con:property></con:properties></con:testCase><con:testCase id="de9a58a8-143b-47b5-9395-2bbd40f93ecb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TwoNumberAddtionDataDrivenTC" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="TwoNumberAddtionStep" id="9a1f7687-3619-4152-ac34-469dfe37242e"><con:settings/><con:config service="http://localhost:9876" resourcePath="/addtwonumbers" methodName="AddTwoNumbers" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="TwoNumberAddtionStep" id="530c872a-0774-4edb-b8ed-634c4174eaae" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9876</con:endpoint><con:request/><con:originalUri>http://localhost/addtwonumbers</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="second" value="${#TestCase#second}"/>
+  <con:entry key="first" value="${#TestCase#first}"/>
+</con:parameters><con:parameterOrder><con:entry>first</con:entry><con:entry>second</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Groovy Script" id="6e483611-e5e3-4614-aca1-52b464a68b43"><con:settings/><con:config><script>import groovy.json.JsonSlurper
+def jsonSlurper = new JsonSlurper()
+def res = context.expand('${TwoNumberAddtionStep#Response}')
+jsonObj = jsonSlurper.parseText(res)
+actAdditionResult = jsonObj.addtion
+expectedAddition = context.expand('${#TestCase#expectedAddtion}')
+assert(actAdditionResult.toInteger()==expectedAddition.toInteger())
+
+if(!context.list.empty){
+firstArr = context.list[0].split(",")
+first = firstArr[0]
+secondArr = firstArr[1].split("@")
+second = secondArr[0]
+
+context.testCase.setPropertyValue("first",first)
+context.testCase.setPropertyValue("second",second)
+context.testCase.setPropertyValue("expectedAddtion",secondArr[1])
+log.info "first number groovy :"  + first
+log.info "second number groovy :"  + second
+log.info "expected addtion groovy :"  + secondArr[1]
+context.testCase.setPropertyValue("first",first)
+context.testCase.setPropertyValue("second",second)
+context.list.remove(0)
+testRunner.gotoStep(0)	
+}
+
+
+/*
+def httpResponseHeaders = context.testCase.testSteps["POST-addCustRequest"].testRequest.response.responseHeaders
+def httpStatus = httpResponseHeaders["#status#"]
+def actStatusCode = (httpStatus =~ "[1-5]\\d\\d")[0]
+log.info actStatusCode
+
+arr = context.currentLine.split("@");
+ if (actStatusCode.trim() == arr[1].trim()){
+	log.info("Assert Passed")
+ }else{
+	log.info("Assert Failed.Expected status code is ${arr[1]} but was $actStatusCode and ${arr[0]}")
+	context.assertionList.add("Assert Failed for data " + arr[0])
+}
+log.info "***" + context.list
+if(!context.list.empty){
+nextLine = context.list[0]
+testRunner.testCase.setPropertyValue("userData",nextLine.split("@")[0]);
+context.list.remove(0)
+testRunner.gotoStep(0)	
+}
+
+assert context.assertionList.isEmpty() : context.assertionList.toString()
+*/</script></con:config></con:testStep><con:setupScript>context.assertionList = []
+context.list = new File('/DATA/PRESENTATION/data.txt').collect {it}
+log.info context.list
+if (!context.list.empty){
+firstArr = context.list[0].split(",")
+first = firstArr[0]
+secondArr = firstArr[1].split("@")
+second = secondArr[0]
+log.info "first number :"  + first
+log.info "second number :"  + second
+log.info "expected addtion :"  + secondArr[1]
+testCase.setPropertyValue("first",first)
+testCase.setPropertyValue("second",second)
+testCase.setPropertyValue("expectedAddtion",secondArr[1])
+context.list.remove(0)
+log.info context.list
+}</con:setupScript><con:properties><con:property><con:name>first</con:name><con:value>22</con:value></con:property><con:property><con:name>second</con:name><con:value>7</con:value></con:property><con:property><con:name>expectedAddtion</con:name><con:value>29</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:restMockService id="1e03fcd9-6980-4a06-b431-cd4613f5f355" port="9876" path="/" host="ULTP-532" name="Add Numbers Mock" docroot=""><con:settings/><con:properties/><con:restMockAction name="/addtwonumbers" method="GET" resourcePath="/addtwonumbers" id="9708504e-21fe-499c-8b8e-6c0624a895df"><con:settings/><con:defaultResponse>BadRequest</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>try{
+def queryString = mockRequest.getRequest().getQueryString()
+arr = queryString.tokenize("=")
+first = (arr[1].split('&amp;')[0]).toInteger()
+second = (arr[2]).toInteger()
+log.info "first number : " + first
+log.info "second number : " + second
+context.twoNumberAddtion = first+second
+log.info "two number addtion : " + context.twoNumberAddtion
+
+return "AddtionTwoNumbersOK"
+}catch(Exception e){
+	log.info e
+	return "BadRequest"
+}
+
+
+/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/
+</con:dispatchPath><con:response name="AddtionTwoNumbersOK" id="e6db695d-0a7f-40f0-b154-8f7895f08d40" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"addtion" : ${twoNumberAddtion}}</con:responseContent></con:response><con:response name="BadRequest" id="da31035d-edfe-48bb-876b-3072eb52164c" httpResponseStatus="400" mediaType="application/json"><con:settings/><con:responseContent>{"message" : "Bad Request"}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/addthreenumbers" method="GET" resourcePath="/addthreenumbers" id="7070aa7f-c8cb-4da1-8dc0-9f24dd4e49fb"><con:settings/><con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>try{
+def queryString = mockRequest.getRequest().getQueryString()
+arr = queryString.tokenize("=")
+log.info arr
+first = (arr[1].split('&amp;')[0]).toInteger()
+second = (arr[2].split('&amp;')[0]).toInteger()
+third = (arr[3]).toInteger()
+context.threeNumberAddtion = first+second+third
+return "AdditionThreeNumbersOK"
+}catch(Exception e){
+	log.info e
+	return "BadRequest"
+}
+
+/*
+// Script dispatcher is used to select a response based on the incoming request.
+// Here are few examples showing how to match based on path, query param, header and body
+
+// Match based on path
+def requestPath = mockRequest.getPath()
+log.info "Path: "+ requestPath
+
+if( requestPath.contains("json") )
+{
+    // return the name of the response you want to dispatch
+    return "JSON Response"
+}
+
+
+// Match based on query parameter
+def queryString = mockRequest.getRequest().getQueryString()
+log.info "QueryString: " + queryString
+
+if( queryString.contains("stockholm") )
+{
+    // return the name of the response you want to dispatch
+    return "Response Stockholm"
+}
+else if( queryString.contains("london") )
+{
+    // return the name of the response you want to dispatch
+    return "Response London"
+}
+
+
+// Match based on header
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList
+
+if( acceptEncodingHeaderList.contains("gzip,deflate") )
+{
+    // return the name of the response you want to dispatch
+    return "GZiped Response"
+}
+
+
+// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("some data") )
+{
+    // return the name of the response you want to dispatch
+    return "Response N"
+}
+*/
+</con:dispatchPath><con:response name="AdditionThreeNumbersOK" id="aa6b9103-3e34-4365-820e-b280fff2ab04" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"ThreeNumberAddtion":${threeNumberAddtion}}</con:responseContent></con:response><con:response name="BadRequest" id="3b0edd12-75c1-478c-bf80-61913ad1bbcd" httpResponseStatus="200"><con:settings/><con:responseContent/></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

@@ -1,4 +1,0 @@
-environment=Test
-serviceEndpoint=http://localhost:90001
-userName=valid-uname
-password=valid-pwd

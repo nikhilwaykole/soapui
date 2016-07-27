@@ -10,7 +10,7 @@ log.info response
 
 ObjectMapper mapper = new ObjectMapper()
 JsonNode invoiceJSON = mapper.readTree(response)
-JsonNode invoiceSchemaJSON = mapper.readTree(new File("/DATA/PRESENTATION/4.HRMS-JsonSchemaValidation/emp_schema.json"))
+JsonNode invoiceSchemaJSON = mapper.readTree(new File("/DATA/PRESENTATION/webservice-testing/JsonSchemaValidation/emp_schema.json"))
 
 JsonSchemaFactory factory = JsonSchemaFactory.byDefault()
 JsonSchema invoiceSchema = factory.getJsonSchema(invoiceSchemaJSON)
